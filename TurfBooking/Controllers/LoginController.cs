@@ -41,8 +41,12 @@ namespace TurfBooking.Controllers
             .FromSql($"SELECT * FROM [Users] WHERE Email = {e.Email} AND EncryptPass = {e.EncryptPass}")
             .ToList();
 
+            
+
             if (User.Count == 1)
             {
+                TempData["Id"] = User[0].Id;
+                TempData["Name"] = User[0].Name;
                 return RedirectToAction("Index", "Home", new { area = "" });
             }
 
