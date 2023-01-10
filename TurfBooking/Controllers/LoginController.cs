@@ -4,6 +4,7 @@ using TurfBooking.Data;
 using TurfBooking.Models;
 using System.Security.Cryptography;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace TurfBooking.Controllers
 {
@@ -30,11 +31,19 @@ namespace TurfBooking.Controllers
             }
 
             UserContext Context = new UserContext();
-            if (Context.Users.Any(o => o.Name == e.Name) && Context.Users.Any(o => o.EncryptPass == e.EncryptPass))
+
+            //if ((Context.Users.Any(o => o.Name == e.Name)) && (Context.Users.Any(o => o.EncryptPass == e.EncryptPass)))
+            //{
+            //    
+            //}
+
+            var User = Context.Users
+            .FromSql($"SELECT * FROM [Users] WHERE Email = {e.Email} AND EncryptPass = {e.EncryptPass}")
+            .ToList();
+
+            if (User.Count == 1)
             {
-                
-            
-            return RedirectToAction("Index", "Home", new { area = "" });
+                return RedirectToAction("Index", "Home", new { area = "" });
             }
 
             return View();
