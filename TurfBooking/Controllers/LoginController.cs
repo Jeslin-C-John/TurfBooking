@@ -32,10 +32,7 @@ namespace TurfBooking.Controllers
 
             UserContext Context = new UserContext();
 
-            //if ((Context.Users.Any(o => o.Name == e.Name)) && (Context.Users.Any(o => o.EncryptPass == e.EncryptPass)))
-            //{
-            //    
-            //}
+            
 
             var User = Context.Users
             .FromSql($"SELECT * FROM [Users] WHERE Email = {e.Email} AND EncryptPass = {e.EncryptPass}")
