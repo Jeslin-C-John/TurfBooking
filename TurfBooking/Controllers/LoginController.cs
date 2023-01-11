@@ -42,8 +42,13 @@ namespace TurfBooking.Controllers
 
             if (User.Count == 1)
             {
-                TempData["Id"] = User[0].Id;
-                TempData["Name"] = User[0].Name;
+              
+
+                HttpContext.Session.SetString("Name", User[0].Name);
+                HttpContext.Session.SetInt32("Id", User[0].Id);
+
+
+
                 return RedirectToAction("Index", "Home", new { area = "" });
             }
 

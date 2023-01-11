@@ -6,8 +6,10 @@ namespace TurfBooking.Controllers
     {
         public IActionResult Index()
         {
-            ViewBag.Name = TempData["Name"];
-            ViewBag.Id = TempData["Id"];
+            
+            ViewBag.Name = HttpContext.Session.GetString("Name");
+            ViewBag.Id = HttpContext.Session.GetInt32("Id");
+
             return View();
         }
     }
