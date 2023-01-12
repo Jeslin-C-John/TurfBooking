@@ -24,15 +24,13 @@
 
         </div>
         <br />
-        <div class="container">
-            <div class="row" >
-                <div class="datetimepicker">
-                    @Html.EditorFor(model => model.StartTime, new { @class = "control-label col-sm-3 datetimepicker" })
-                </div>
-               <div class="col-sm-3">
-               </div>
-            </div>  
-        </div>
+       @* @Html.DropDownListFor(model => model.StartTime,
+    new List<SelectListItem> {
+    new SelectListItem { Value = "9:00 AM" , Text = "9:00 AM" },
+    new SelectListItem { Value = "10:00 AM" , Text = "10:00 AM" },
+    new SelectListItem { Value = "11:00 AM" , Text = "11:00 AM" }
+    },
+    new { @class="selectstart"})*@
         <br />
         @*<div>
             <p><span>@Html.CheckBoxFor(model => model.BoolStatus)</span>    Check For Completion.</p>
@@ -46,7 +44,3 @@
     }
 
 </center>
-
-<script>
-    $(".datetimepicker").datetimepicker({ format: 'HH:mm:ss', pickDate: false });
-</script>

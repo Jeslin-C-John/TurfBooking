@@ -1,7 +1,18 @@
-﻿Home
+﻿@model TurfBooking.Models.BookingModel
 <h1>Name: @ViewBag.Name</h1>
 <br/>
 <h1>
     ID: @ViewBag.Id
 </h1>
-<input class="btn btn-primary btn-sm float-left" type="button" value="Book A Game" onclick="location.href = '/AddBook/Index'" />
+@using (Html.BeginForm())
+{
+    <div>
+        <br />
+        @Html.EditorFor(model => model.ShortBookingDate, new { htmlAttributes = new { @class = "form-control input-sm" } })
+        @Html.ValidationMessageFor(model => model.ShortBookingDate)
+    </div>
+    
+    <div>
+        <input class="btn btn-primary" type="submit" value="Book Now" />
+    </div>
+}
