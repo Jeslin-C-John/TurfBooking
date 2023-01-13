@@ -39,11 +39,20 @@ namespace TurfBooking.Controllers
                     var SlotListObj=new SlotList();
 
                     SlotListObj.Time = j + 6;
-                    SlotListObj.Ground1 = SlotObj.GroundSlotsArr[0, j];
-                    SlotListObj.Ground2 = SlotObj.GroundSlotsArr[1,j];
-                    SlotListObj.Ground3 = SlotObj.GroundSlotsArr[2, j];
 
-                    SlotList.Add(SlotListObj);
+                if (SlotObj.GroundSlotsArr[0, j] == false)
+                    SlotListObj.Ground1 = "Book Now!";
+                else SlotListObj.Ground1 = "Slot Filled";
+
+                if (SlotObj.GroundSlotsArr[1, j] == false)
+                    SlotListObj.Ground2 = "Book Now!";
+                else SlotListObj.Ground2 = "Slot Filled";
+
+                if (SlotObj.GroundSlotsArr[2, j] == false)
+                    SlotListObj.Ground3 = "Book Now!";
+                else SlotListObj.Ground3 = "Slot Filled";
+
+                SlotList.Add(SlotListObj);
                 }
             
 
