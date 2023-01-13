@@ -31,7 +31,23 @@ namespace TurfBooking.Controllers
                 
             }
 
-            return View();
+            var SlotList = new List<SlotList>();
+
+            
+                for (int j = 0; j < 6; j++)
+                {
+                    var SlotListObj=new SlotList();
+
+                    SlotListObj.Time = j + 6;
+                    SlotListObj.Ground1 = SlotObj.GroundSlotsArr[0, j];
+                    SlotListObj.Ground2 = SlotObj.GroundSlotsArr[1,j];
+                    SlotListObj.Ground3 = SlotObj.GroundSlotsArr[2, j];
+
+                    SlotList.Add(SlotListObj);
+                }
+            
+
+            return View(SlotList);
         }
 
         //[HttpPost]

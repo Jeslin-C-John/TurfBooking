@@ -1,5 +1,86 @@
-﻿@model TurfBooking.Models.BookingModel
+﻿@model List<TurfBooking.Models.SlotList>
 
 <h2>Booking For @ViewBag.BookingDate</h2>
 
 <input class="btn btn-primary" type="button" value="Cancel" onclick="location.href = '/Home/Index'" />
+
+<br/>
+<br />
+<br />
+
+
+   
+
+
+
+<table id="table_id" class="table">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">Time Slot</th>
+            <th scope="col">Ground 1</th>
+            <th scope="col">Ground 2</th>
+            <th scope="col">Ground 3</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var instance in Model)
+            {
+                <tr>
+                    <th scope="row">@instance.Time AM</th>
+                    <td class="y_n" >@instance.Ground1</td>
+                    <td class="y_n" >@instance.Ground2</td>
+                    <td class="y_n" >@instance.Ground3</td>
+                </tr>
+            }
+    </tbody>
+</table>
+
+
+
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.js"></script>
+    
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#table_id td.y_n').each(function () {
+                if ($(this).text() == 'True') {
+                $(this).css('background-color', '#8a0100');
+                }
+                if ($(this).text() == 'False') {
+                    $(this).css('background-color', '#027121');
+                }
+            });
+        });
+
+    </script>
+
+    <style>
+    table, th, td {
+        border: 1px solid black !important;
+    }
+    </style>
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery-1.10.0.min.js"
+        integrity="sha256-2+LznWeWgL7AJ1ciaIG5rFP7GKemzzl+K75tRyTByOE="
+        crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
+<script src="https://cdn.datatables.net/datetime/1.2.0/js/dataTables.dateTime.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/datetime/1.2.0/css/dataTables.dateTime.min.css">
