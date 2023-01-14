@@ -27,6 +27,7 @@
             var TimeCount = 6;
             var GroundCount = 1;
             var BookingDate = @ViewBag.BookingDate;
+            var SlotCount = 1;
         }
         @foreach (var instance in Model)
             {
@@ -35,16 +36,19 @@
                     GroundCount = 1;
                 }
                     <th scope="row">@instance.Time AM</th>
-                <td class="y_n"><a class="btn" href='@Url.Action("Delete", "View", new { Ground=@GroundCount, Time=@TimeCount, Date=@BookingDate })'>@instance.Ground1</a></td>
+                <td class="y_n"><a class="btn" id="booklink_@SlotCount" href='@Url.Action("Delete", "View", new { Ground=@GroundCount, Time=@TimeCount, Date=@BookingDate })'>@instance.Ground1</a></td>
                 @{
                     GroundCount++;
+                    SlotCount++;
                 }
-                <td class="y_n"><a class="btn" href='@Url.Action("Delete", "View", new { Ground=@GroundCount, Time=@TimeCount, Date=@BookingDate })'>@instance.Ground2</a></td>
+                <td class="y_n"><a class="btn" id="booklink_@SlotCount" href='@Url.Action("Delete", "View", new { Ground=@GroundCount, Time=@TimeCount, Date=@BookingDate })'>@instance.Ground2</a></td>
                 @{
                     GroundCount++;
+                    SlotCount++;
                 }
-                <td class="y_n"><a class="btn" href='@Url.Action("Delete", "View", new { Ground=@GroundCount, Time=@TimeCount, Date=@BookingDate })'>@instance.Ground3</a></td>
-                </tr>
+                <td class="y_n"><a class="btn" id="booklink_@SlotCount" href='@Url.Action("Delete", "View", new { Ground=@GroundCount, Time=@TimeCount, Date=@BookingDate })'>@instance.Ground3</a></td>
+                @{SlotCount++;}
+            </tr>
             TimeCount++;
             }
     </tbody>
@@ -60,8 +64,11 @@
 
 <script type="text/javascript">
 
+   
     $(document).ready(function () {
+        
         $('#table_id td.y_n').each(function () {
+            
             if ($(this).text() == 'Slot Filled') {
                 $(this).css('background-color', '#ff90a4');
             }
@@ -69,19 +76,52 @@
                 $(this).css('background-color', '#ade3b1');
 
             }
+
+    
         });
     });
 
 
 </script>
 
+@*<script type="text/javascript">
+
+    @{
+        var SlotNo = 0;
+    }
+
+        $(document).ready(function () {
+
+            $('#table_id td.y_n').each(function () {
+
+                if ($(this).text() == 'Slot Filled') {
+                    $(this).css('background-color', '#ff90a4');
+                }
+                if ($(this).text() == 'Book Now!') {
+                    $(this).css('background-color', '#ade3b1');
+
+                }
+
+    @SlotNo++;
+                if ($(this).text() == 'Slot Filled') {
+                    $(a.booklink_@SlotNo).attr('href', '#', true);
+                }
+            });
+        });
+
+
+</script>*@
+
 <style>
 
     table, th, td {
-        border: 1.3px solid black !important;
+        border: 3px solid white !important;
         text-align: center;
         vertical-align: middle;
+        background-color: #e9ecef;
     }
+
+    
 
     a {
         display: block;
