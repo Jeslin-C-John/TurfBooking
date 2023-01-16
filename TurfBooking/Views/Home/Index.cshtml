@@ -1,4 +1,5 @@
 ﻿@model TurfBooking.Models.BookingModel
+
 <h1>Name: @ViewBag.Name</h1>
 <br/>
 <h1>
@@ -11,7 +12,38 @@
         @Html.EditorFor(model => model.ShortBookingDate, new { htmlAttributes = new { @class = "form-control input-sm" } })
         @Html.ValidationMessageFor(model => model.ShortBookingDate)
     </div>
-    
+
+    <h3>Your Booking History</h3>
+
+    <table id="table_id" class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Time Slot</th>
+                <th scope="col">Ground 1</th>
+                <th scope="col">Ground 2</th>
+                <th scope="col">Ground 3</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @{
+                var TimeCount = 6;
+                var GroundCount = 1;
+                var BookingDate = @ViewBag.BookingDate;
+                var SlotCount = 1;
+            }
+            @foreach (var instance in Model)
+            {
+                <tr>
+                    <td>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
     <div>
         <input class="btn btn-primary" type="submit" value="Book Now" />
     </div>

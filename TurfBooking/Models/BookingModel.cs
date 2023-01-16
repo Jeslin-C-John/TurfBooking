@@ -7,7 +7,7 @@ namespace TurfBooking.Models
     {
         [Key]
         public int Id { get; set; }
-        public int UserId { get; set; }
+        public int? UserId { get; set; }
         [DataType(DataType.Date)]
         [Required]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
@@ -19,5 +19,7 @@ namespace TurfBooking.Models
         public DateOnly ShortBookingDate { get; set; }
         public int Ground { get; set; }
         public int Slot { get; set; }
+        [NotMapped]
+        public String? SlotPM { get; set; }
     }
 }

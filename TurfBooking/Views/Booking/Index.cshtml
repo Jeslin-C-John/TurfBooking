@@ -36,17 +36,44 @@
                     GroundCount = 1;
                 }
                     <th scope="row">@instance.Time AM</th>
-                <td class="y_n"><a class="btn" id="booklink_@SlotCount" href='@Url.Action("Delete", "View", new { Ground=@GroundCount, Time=@TimeCount, Date=@BookingDate })'>@instance.Ground1</a></td>
+                @{
+                    if (@instance.Ground1 == "Slot Filled")
+                    {
+                        <td class="y_n" id="td_@SlotCount">@instance.Ground1</td>
+                    }
+                    else
+                    {
+                        <td class="y_n" id="td_@SlotCount"><a class="btn booklink" id="booklink_@SlotCount" href='@Url.Action("Index", "ConfirmBook", new { Ground=@GroundCount, Time=@TimeCount, Date=@BookingDate })'>@instance.Ground1</a></td>
+                    }
+                }
                 @{
                     GroundCount++;
                     SlotCount++;
                 }
-                <td class="y_n"><a class="btn" id="booklink_@SlotCount" href='@Url.Action("Delete", "View", new { Ground=@GroundCount, Time=@TimeCount, Date=@BookingDate })'>@instance.Ground2</a></td>
+                @{
+                    if (@instance.Ground2 == "Slot Filled")
+                    {
+                        <td class="y_n" id="td_@SlotCount">@instance.Ground2</td>
+                    }
+                    else
+                    {
+                        <td class="y_n" id="td_@SlotCount"><a class="btn booklink" id="booklink_@SlotCount" href='@Url.Action("Index", "ConfirmBook", new { Ground=@GroundCount, Time=@TimeCount, Date=@BookingDate })'>@instance.Ground2</a></td>
+                    }
+                }
                 @{
                     GroundCount++;
                     SlotCount++;
                 }
-                <td class="y_n"><a class="btn" id="booklink_@SlotCount" href='@Url.Action("Delete", "View", new { Ground=@GroundCount, Time=@TimeCount, Date=@BookingDate })'>@instance.Ground3</a></td>
+                @{
+                    if (@instance.Ground3 == "Slot Filled")
+                    {
+                        <td class="y_n" id="td_@SlotCount">@instance.Ground3</td>
+                    }
+                    else
+                    {
+                        <td class="y_n" id="td_@SlotCount"><a class="btn booklink" id="booklink_@SlotCount" href='@Url.Action("Index", "ConfirmBook", new { Ground=@GroundCount, Time=@TimeCount, Date=@BookingDate })'>@instance.Ground3</a></td>
+                    }
+                }
                 @{SlotCount++;}
             </tr>
             TimeCount++;
@@ -62,20 +89,31 @@
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.js"></script>
 
+
+
+
 <script type="text/javascript">
 
    
     $(document).ready(function () {
+  
+    $SlotNo=0;
         
         $('#table_id td.y_n').each(function () {
+
             
+
             if ($(this).text() == 'Slot Filled') {
                 $(this).css('background-color', '#ff90a4');
+                
             }
             if ($(this).text() == 'Book Now!') {
                 $(this).css('background-color', '#ade3b1');
 
+
             }
+
+            
 
     
         });
@@ -84,33 +122,13 @@
 
 </script>
 
-@*<script type="text/javascript">
-
-    @{
-        var SlotNo = 0;
-    }
-
-        $(document).ready(function () {
-
-            $('#table_id td.y_n').each(function () {
-
-                if ($(this).text() == 'Slot Filled') {
-                    $(this).css('background-color', '#ff90a4');
-                }
-                if ($(this).text() == 'Book Now!') {
-                    $(this).css('background-color', '#ade3b1');
-
-                }
-
-    @SlotNo++;
-                if ($(this).text() == 'Slot Filled') {
-                    $(a.booklink_@SlotNo).attr('href', '#', true);
-                }
-            });
-        });
 
 
-</script>*@
+
+
+
+
+
 
 <style>
 
