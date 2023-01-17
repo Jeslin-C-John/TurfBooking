@@ -39,7 +39,7 @@ namespace TurfBooking.Controllers
             };
             Context.Add(Instance);
             Context.SaveChanges();
-            return View();
+            return RedirectToAction("Index", "Login", new { area = "" });
         }
     }
 }

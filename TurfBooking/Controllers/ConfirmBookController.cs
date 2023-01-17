@@ -12,6 +12,7 @@ namespace TurfBooking.Controllers
         [HttpGet]
         public IActionResult Index(int Time, int Ground, String Date)
         {
+            ViewBag.Name = HttpContext.Session.GetString("Name");
             BookingModel Instance= new BookingModel();
             Instance.Slot = Time;
             Instance.Ground = Ground;
@@ -35,8 +36,8 @@ namespace TurfBooking.Controllers
         [HttpPost]
         public IActionResult Index(BookingModel e)
         {
-            
 
+            ViewBag.Name = HttpContext.Session.GetString("Name");
             int? UserId = HttpContext.Session.GetInt32("Id");
             BookingContext Context = new BookingContext();
            BookingModel Instance = new BookingModel()

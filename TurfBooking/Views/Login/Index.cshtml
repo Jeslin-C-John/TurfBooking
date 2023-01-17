@@ -28,10 +28,10 @@
             @Html.PasswordFor(model => model.Password, new { id = "Password", @class = "form-control", placeholder = "Password *" })
             @Html.ValidationMessageFor(model => model.Password)
         </div>
-        <div>
+        @*<div>
             <br />Remember Me
             @Html.CheckBoxFor(model=>model.RememberMe)
-        </div>
+        </div>*@
         <div>
             <br /><div class="text-danger">
                 @ViewBag.Message

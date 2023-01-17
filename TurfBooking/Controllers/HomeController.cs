@@ -68,6 +68,8 @@ namespace TurfBooking.Controllers
         [HttpPost]
         public ActionResult DateForm(BookingModel Instance)
         {
+            ViewBag.Name = HttpContext.Session.GetString("Name");
+
             TempData["BookingDate"] = Instance.ShortBookingDate.ToString();
             
 

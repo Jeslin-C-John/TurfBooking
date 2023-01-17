@@ -11,6 +11,7 @@ namespace TurfBooking.Controllers
         [HttpGet]
         public IActionResult Index(BookingModel Instance)
         {
+            ViewBag.Name = HttpContext.Session.GetString("Name");
 
             BookingContext Context = new BookingContext();
             ViewBag.BookingDate = TempData["BookingDate"];

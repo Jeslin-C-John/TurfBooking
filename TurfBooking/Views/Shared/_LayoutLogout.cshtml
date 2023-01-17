@@ -10,22 +10,18 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #e3f2fd;">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">TurfBooking</a>
-            <hr/>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    @*<input class="btn btn-primary fa fa-home" type="button" value="Home" onclick="location.href = '/Login/Index'" />*@
-                    @*<input class="btn btn-primary btn-md btn-block" type="button" value="Logout" onclick="location.href = '/Login/Index'" />*@
-                 
+        <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #e3f2fd;width: 100%;">
+            <div class="container-fluid">
+
+                <a class="navbar-brand" href="#">TaskLogger</a>
+
+                <div class="row">
+                    <h5>@ViewBag.Name      <span><input class="btn btn-danger btn-sm " type="button" value="Logout" onclick="location.href = '@Url.Action("Index", "Login")'" /></span></h5>
+
                 </div>
+
             </div>
-        </div>
-    </nav>
+        </nav>
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -34,7 +30,7 @@
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container justify-content-center">
+        <div class="container">
             &copy; 2023 - TurfBooking
         </div>
     </footer>
