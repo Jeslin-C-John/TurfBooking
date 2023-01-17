@@ -60,10 +60,6 @@ namespace TurfBooking.Controllers
             return View(SlotList);
         }
 
-        //[HttpPost]
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
+     
     }
 }

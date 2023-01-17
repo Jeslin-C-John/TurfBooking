@@ -35,11 +35,11 @@
                     @{
                     GroundCount = 1;
                 }
-                    <th scope="row">@instance.Time AM</th>
+                    <th scope="row">@instance.Time PM</th>
                 @{
                     if (@instance.Ground1 == "Slot Filled")
                     {
-                        <td class="y_n" id="td_@SlotCount"><a class="btn" onclick="alert('Slot Unavailable');" />@instance.Ground1</td>
+                        <td class="y_n" id="td_@SlotCount"><button type="button" class="unbutton" name="btnLink" onclick="$('#DangerModalalert').modal('show');" data-target="#DangerModalalert" data-item="@instance.Ground1">@instance.Ground1</button></td>
                     }
                     else
                     {
@@ -53,7 +53,7 @@
                 @{
                     if (@instance.Ground2 == "Slot Filled")
                     {
-                        <td class="y_n" id="td_@SlotCount"><a class="btn" onclick="alert('Slot Unavailable');" />@instance.Ground2</td>
+                        <td class="y_n" id="td_@SlotCount"><button type="button" class="unbutton" name="btnLink" onclick="$('#DangerModalalert').modal('show');" data-target="#DangerModalalert" data-item="@instance.Ground2">@instance.Ground2</button></td>
                     }
                     else
                     {
@@ -67,7 +67,7 @@
                 @{
                     if (@instance.Ground3 == "Slot Filled")
                     {
-                        <td class="y_n" id="td_@SlotCount"><a class="btn" onclick="alert('Slot Unavailable');" />@instance.Ground3</td>
+                        <td class="y_n" id="td_@SlotCount"><button type="button" class="unbutton" name="btnLink" onclick="$('#DangerModalalert').modal('show');" data-target="#DangerModalalert" data-item="@instance.Ground3">@instance.Ground3</button></td>
                     }
                     else
                     {
@@ -124,7 +124,22 @@
 
 
 
+<div class="modal fade" id="DangerModalalert" role="dialog">
+           
+    <div class="modal-dialog err-pop" style="">
+                                
+        <div class="modal-content">
+                                    
+            <div class="modal-header">
+                                        
+                <h3>Slot Unavailable</h3>
 
+            </div>
+                                    
+        </div>
+    </div>                             
+                                    
+</div>
 
 
 
@@ -147,6 +162,15 @@
         text-align: center;
         vertical-align: middle;
     }
+
+    .unbutton{
+                        color: black;
+                        background-color: #ff90a4;
+                        border: none;
+                      
+    }
+
+
 
 </style>
 
