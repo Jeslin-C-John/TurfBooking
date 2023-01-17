@@ -1,50 +1,45 @@
-﻿@model TurfBooking.Models.BookingModel
-
-<h1>Name: @ViewBag.Name</h1>
+﻿@model List<TurfBooking.Models.BookingModel>
+<h3>Name: @ViewBag.Name</h3>
 <br/>
-<h1>
+<h3>
     ID: @ViewBag.Id
-</h1>
-@using (Html.BeginForm())
-{
-    <div>
-        <br />
-        @Html.EditorFor(model => model.ShortBookingDate, new { htmlAttributes = new { @class = "form-control input-sm" } })
-        @Html.ValidationMessageFor(model => model.ShortBookingDate)
-    </div>
+</h3>
 
-    <h3>Your Booking History</h3>
 
-    <table id="table_id" class="table">
-        <thead class="thead-light">
+<input class="btn btn-primary" type="button" value="New Booking" onclick="location.href = '/Home/DateForm'" />
+
+
+<h3>Your Booking History</h3>
+
+
+
+<table id="table_id" class="table">
+    <thead class="thead-light">
+        <tr>
+
+            <th scope="col">Date</th>
+            <th scope="col">Time</th>
+            <th scope="col">Ground</th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var instance in Model)
+        {
             <tr>
-                <th scope="col">Time Slot</th>
-                <th scope="col">Ground 1</th>
-                <th scope="col">Ground 2</th>
-                <th scope="col">Ground 3</th>
+                <td>@instance.ShortBookingDate</td>
+                <td>@instance.SlotPM</td>
+                <td>@instance.Ground</td>
             </tr>
-        </thead>
+        }
+    </tbody>
 
-        <tbody>
-            @{
-                var TimeCount = 6;
-                var GroundCount = 1;
-                var BookingDate = @ViewBag.BookingDate;
-                var SlotCount = 1;
-            }
-            @foreach (var instance in Model)
-            {
-                <tr>
-                    <td>
+</table>
+<br />
 
-                    </td>
-                </tr>
-            }
-        </tbody>
+<br />
+<br/>
 
-    </table>
 
-    <div>
-        <input class="btn btn-primary" type="submit" value="Book Now" />
-    </div>
-}

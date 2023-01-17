@@ -30,10 +30,18 @@ namespace TurfBooking.Controllers
             {
                 BookingModel BookHistoryObj= new BookingModel();
                 string? LongDate = BookHistory[i].BookingDate.ToString();
-                DateOnly.TryParse(LongDate, out DateOnly ShortDate);
-                BookHistoryObj.ShortBookingDate = ShortDate;
+                
+                string? ShortDate=LongDate.Substring(0, 10);
+
+                DateOnly DateOnlyShort;
+
+                DateOnly.TryParse(ShortDate, out DateOnlyShort);
+
+                BookHistoryObj.ShortBookingDate = DateOnlyShort;
+
+                BookHistoryObj.BookingDate = BookHistory[i].BookingDate;
                 BookHistoryObj.Ground = BookHistory[i].Ground + 1;
-                BookHistoryObj.Slot= BookHistory[i].Slot + 1;
+                BookHistoryObj.Slot= BookHistory[i].Slot + 6;
                 BookHistoryObj.SlotPM = BookHistoryObj.Slot + " PM";
                 BookHistoryList.Add(BookHistoryObj);
             }
@@ -41,8 +49,24 @@ namespace TurfBooking.Controllers
 
             return View(BookHistoryList);
         }
+
+
+        [HttpGet]
+        public IActionResult DateForm()
+        {
+
+            ViewBag.Name = HttpContext.Session.GetString("Name");
+            ViewBag.Id = HttpContext.Session.GetInt32("Id");
+
+            
+
+
+            return View();
+        }
+
+
         [HttpPost]
-        public ActionResult Index(BookingModel Instance)
+        public ActionResult DateForm(BookingModel Instance)
         {
             TempData["BookingDate"] = Instance.ShortBookingDate.ToString();
             

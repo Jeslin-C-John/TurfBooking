@@ -1,0 +1,23 @@
+﻿@model TurfBooking.Models.BookingModel
+
+@using (Html.BeginForm())
+{
+        <div>
+            <br />
+        @Html.EditorFor(model => model.ShortBookingDate, new { htmlAttributes = new { @class = "form-control input-sm" } })
+        @Html.ValidationMessageFor(model => model.ShortBookingDate)
+        </div>
+
+
+
+        <div>
+            <input class="btn btn-primary" type="submit" value="Book Now" />
+
+        <input class="btn btn-primary" type="button" value="Cancel" onclick="location.href = '/Home/Index'" />
+        </div>
+
+        <br />
+
+
+
+}
