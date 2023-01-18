@@ -8,7 +8,7 @@
 {
         <div class="form-group">
             <label asp-for="ShortBookingDate" class="control-label"></label>
-        <input asp-for="ShortBookingDate" id="datepicker" type="text" class="form-control" value="@DateTime.Now.ToString("dd-MM-yyyy")" />
+            <input asp-for="ShortBookingDate" id="datepicker" type="text" class="form-control" value="@DateTime.Now.ToString("dd-MM-yyyy")" />
             <span asp-validation-for="ShortBookingDate" class="text-danger"></span>
         </div>
 

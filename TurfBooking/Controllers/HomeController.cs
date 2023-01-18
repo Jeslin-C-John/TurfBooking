@@ -71,7 +71,8 @@ namespace TurfBooking.Controllers
             ViewBag.Name = HttpContext.Session.GetString("Name");
 
             TempData["BookingDate"] = Instance.ShortBookingDate.ToString();
-            
+            HttpContext.Session.SetString("BookingDate", Instance.ShortBookingDate.ToString());
+
 
             string ShortBookingString = Instance.ShortBookingDate.ToString("yyyy-MM-dd");
             string LongBookingString = ShortBookingString + " 00:00:00";

@@ -14,7 +14,7 @@ namespace TurfBooking.Controllers
             ViewBag.Name = HttpContext.Session.GetString("Name");
 
             BookingContext Context = new BookingContext();
-            ViewBag.BookingDate = TempData["BookingDate"];
+            ViewBag.BookingDate = HttpContext.Session.GetString("BookingDate");
 
             var FillSlot = Context.Bookings
             .FromSql($"SELECT * FROM [Bookings] WHERE BookingDate LIKE {TempData["LongBookingDate"]}")

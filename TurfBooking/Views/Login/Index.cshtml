@@ -18,20 +18,20 @@
     {
         <div>
             <br />
-            @*<p class="font-weight-bold">Email</p>*@
-            @Html.TextBoxFor(model => model.Email, new { id = "Email", @class = "form-control", placeholder = "Email *" })
-            @Html.ValidationMessageFor(model => model.Email)
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" required type="text" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
         </div>
         <div>
             <br />
-            @*<p class="font-weight-bold">Password</p>*@
-            @Html.PasswordFor(model => model.Password, new { id = "Password", @class = "form-control", placeholder = "Password *" })
-            @Html.ValidationMessageFor(model => model.Password)
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" required type="password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
         </div>
-        @*<div>
-            <br />Remember Me
-            @Html.CheckBoxFor(model=>model.RememberMe)
-        </div>*@
         <div>
             <br /><div class="text-danger">
                 @ViewBag.Message
@@ -43,3 +43,10 @@
         </div>
     }
 </center>
+
+
+<style>
+    .control-label {
+        float: left;
+    }
+</style>

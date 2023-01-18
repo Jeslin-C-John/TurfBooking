@@ -5,15 +5,28 @@ namespace TurfBooking.Models
 {
     public class UserModel
     {
-        [Key]public int Id { get; set; }
-        [Required]
-        public string? Name { get; set; }
+        [Key]
+        public int Id { get; set; }
+
+
+        [Required(ErrorMessage = "Name is required!")]
+        [StringLength(25)]
+        public string Name { get; set; }
+
+
+        [Required(ErrorMessage = "Password is required!")]
+        [StringLength(50, MinimumLength = 6)]
         [NotMapped]
-        [Required]
-        public string? Password { get; set; }
-        [Required]
-        public string? Email { get; set; }
+        public string Password { get; set; }
+
+
+        [Required(ErrorMessage = "Email is required!")]
+        [EmailAddress]
+        public string Email { get; set; }
+
         public string? EncryptPass { get; set; }
+
+
         [NotMapped]
         public bool RememberMe { get; set; }
     }
