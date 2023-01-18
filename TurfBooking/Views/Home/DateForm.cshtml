@@ -6,10 +6,10 @@
 
 @using (Html.BeginForm())
 {
-        <div>
-            <br />
-        @Html.EditorFor(model => model.ShortBookingDate, new { htmlAttributes = new { @class = "form-control input-sm" } })
-        @Html.ValidationMessageFor(model => model.ShortBookingDate)
+        <div class="form-group">
+            <label asp-for="ShortBookingDate" class="control-label"></label>
+        <input asp-for="ShortBookingDate" id="datepicker" type="text" class="form-control" value="@DateTime.Now.ToString("dd-MM-yyyy")" />
+            <span asp-validation-for="ShortBookingDate" class="text-danger"></span>
         </div>
 
 
@@ -29,3 +29,27 @@
 
 
 }
+
+@section Scripts
+    {
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $("#datepicker").datepicker(
+                {   
+                    dateFormat: 'dd-mm-yy',
+                    minDate: '-0D',
+                    maxDate: '+6D',
+                }
+            );
+        });
+    </script>
+}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/datepicker.min.js" integrity="sha512-RCgrAvvoLpP7KVgTkTctrUdv7C6t7Un3p1iaoPr1++3pybCyCsCZZN7QEHMZTcJTmcJ7jzexTO+eFpHk4OCFAg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/datepicker.common.min.js" integrity="sha512-mO702mHlRSyiikpZ/tE5PDAHi1FYjgjDkoT/yvK7DgE8o22bcq/fvby2tqF5G9tOJrnFakgBSuv/Oki5UMq1jA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/datepicker.esm.min.js" integrity="sha512-ra/RUbfkWg5FK8u7aDV6+vWA4zhc/oqW34Y00pHBJ/4EIXE0Wq7oAOnahMp66hQH48IMF5nIbrncIvJmSYurQw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/datepicker.min.css" integrity="sha512-YdYyWQf8AS4WSB0WWdc3FbQ3Ypdm0QCWD2k4hgfqbQbRCJBEgX0iAegkl2S1Evma5ImaVXLBeUkIlP6hQ1eYKQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>

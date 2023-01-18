@@ -12,12 +12,11 @@ namespace TurfBooking.Models
         [Required]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime BookingDate { get; set; }
-        [NotMapped]
-        [DataType(DataType.Date)]
-        [Required]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
 
-        
+        [NotMapped]
+        //[DataType(DataType.Date)]
+        [Required]
+        //[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
 
         public DateOnly ShortBookingDate { get; set; }
         public int Ground { get; set; }
