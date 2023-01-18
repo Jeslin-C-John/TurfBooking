@@ -12,6 +12,25 @@ namespace TurfBooking.Controllers
     {
         public IActionResult Index()
         {
+            if (Request.Cookies["Email"] != null)
+            {
+                UserContext Context = new UserContext();
+                var User = Context.Users
+                .Where(s => s.Email == Request.Cookies["Email"])
+                .ToList();
+                if (User.Count == 1)
+                {
+
+
+                    HttpContext.Session.SetString("Name", User[0].Name);
+                    HttpContext.Session.SetInt32("Id", User[0].Id);
+
+                    
+
+                    return RedirectToAction("Index", "Home", new { area = "" });
+                }
+            }
+
             return View();
         }
 
@@ -59,7 +78,11 @@ namespace TurfBooking.Controllers
                 HttpContext.Session.SetString("Name", User[0].Name);
                 HttpContext.Session.SetInt32("Id", User[0].Id);
 
-
+                if (e.RememberMe)
+                {
+                    CookieOptions option = new CookieOptions();
+                    Response.Cookies.Append("Email", e.Email, option);
+                }
 
                 return RedirectToAction("Index", "Home", new { area = "" });
             }
