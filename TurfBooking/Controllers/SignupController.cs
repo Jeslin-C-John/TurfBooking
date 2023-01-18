@@ -20,6 +20,25 @@ namespace TurfBooking.Controllers
         
         public IActionResult Index(UserModel e)
         {
+            UserContext DupContext = new UserContext();
+            var DupUser = DupContext.Users
+           .Where(s => s.Email == e.Email)
+           .ToList();
+
+            if (DupUser.Count == 1)
+            {
+
+
+                ViewBag.Message = "User Already Exists!";
+
+
+
+                return View();
+            }
+
+
+
+
             using (SHA256 sha256Hash = SHA256.Create())
             {
                 byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(e.Password));

@@ -44,10 +44,8 @@ namespace TurfBooking.Controllers
             .Where(s => s.EncryptPass == e.EncryptPass)
             .ToList();
 
+
             
-                                      
-
-
 
 
 
