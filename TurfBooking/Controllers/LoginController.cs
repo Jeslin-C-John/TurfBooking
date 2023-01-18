@@ -34,11 +34,25 @@ namespace TurfBooking.Controllers
 
             
 
+            //var User = Context.Users
+            //.FromSql($"SELECT * FROM [Users] WHERE Email = {e.Email} AND EncryptPass = {e.EncryptPass}")
+            //.ToList();
+
+
             var User = Context.Users
-            .FromSql($"SELECT * FROM [Users] WHERE Email = {e.Email} AND EncryptPass = {e.EncryptPass}")
+            .Where(s => s.Email == e.Email)
+            .Where(s => s.EncryptPass == e.EncryptPass)
             .ToList();
 
             
+                                      
+
+
+
+
+
+
+
 
             if (User.Count == 1)
             {

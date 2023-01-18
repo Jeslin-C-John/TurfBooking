@@ -3,6 +3,7 @@ using TurfBooking.Data;
 using TurfBooking.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace TurfBooking.Controllers
 {
@@ -16,8 +17,14 @@ namespace TurfBooking.Controllers
             BookingContext Context = new BookingContext();
             ViewBag.BookingDate = HttpContext.Session.GetString("BookingDate");
 
+            DateTime.TryParse(HttpContext.Session.GetString("BookingDate"), out DateTime ParseDateTime);
+
+            //var FillSlot = Context.Bookings
+            //.FromSql($"SELECT * FROM [Bookings] WHERE BookingDate LIKE {TempData["LongBookingDate"]}")
+            //.ToList();
+
             var FillSlot = Context.Bookings
-            .FromSql($"SELECT * FROM [Bookings] WHERE BookingDate LIKE {TempData["LongBookingDate"]}")
+            .Where(s => s.BookingDate == ParseDateTime)
             .ToList();
 
 

@@ -17,12 +17,18 @@ namespace TurfBooking.Controllers
             ViewBag.Id = HttpContext.Session.GetInt32("Id");
 
             BookingContext Context = new BookingContext();
+
+            //var BookHistory = Context.Bookings
+            //.FromSql($"SELECT * FROM [Bookings] WHERE UserId = {HttpContext.Session.GetInt32("Id")} ORDER BY Id DESC")
+            //.ToList();
+
             var BookHistory = Context.Bookings
-            .FromSql($"SELECT * FROM [Bookings] WHERE UserId = {HttpContext.Session.GetInt32("Id")} ORDER BY Id DESC")
+            .Where(s => s.UserId == HttpContext.Session.GetInt32("Id"))
+            .OrderByDescending(s => s.UserId)
             .ToList();
 
 
-            
+
             var BookHistoryList = new List<BookingModel>();
             
 
