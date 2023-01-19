@@ -42,6 +42,10 @@
                     dateFormat: 'dd-mm-yy',
                     minDate: '-0D',
                     maxDate: '+6D',
+                    beforeShowDay: function (date) {
+                        var day = date.getDay();
+                        return [day != 0, ''];
+                    }
                 }
             );
         });
