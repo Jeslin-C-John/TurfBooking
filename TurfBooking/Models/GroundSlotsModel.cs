@@ -5,6 +5,6 @@ namespace TurfBooking.Models
     public class GroundSlotsModel
     {
 
-        public bool[,] GroundSlotsArr = new bool[3, 6];
+        public bool[,] GroundSlotsArr = new bool[3, 18];
     }
 }

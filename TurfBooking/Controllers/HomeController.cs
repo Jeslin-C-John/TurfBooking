@@ -24,7 +24,7 @@ namespace TurfBooking.Controllers
 
             var BookHistory = Context.Bookings
             .Where(s => s.UserId == HttpContext.Session.GetInt32("Id"))
-            .OrderByDescending(s => s.UserId)
+            .OrderByDescending(s => s.BookingDate)
             .ToList();
 
 
@@ -48,7 +48,7 @@ namespace TurfBooking.Controllers
                 BookHistoryObj.BookingDate = BookHistory[i].BookingDate;
                 BookHistoryObj.Ground = BookHistory[i].Ground + 1;
                 BookHistoryObj.Slot= BookHistory[i].Slot + 6;
-                BookHistoryObj.SlotPM = BookHistoryObj.Slot + " PM";
+                BookHistoryObj.SlotPM = BookHistoryObj.Slot + ":00";
                 BookHistoryList.Add(BookHistoryObj);
             }
 

@@ -42,7 +42,7 @@ namespace TurfBooking.Controllers
             var SlotList = new List<SlotList>();
 
             
-                for (int j = 0; j < 6; j++)
+                for (int j = 0; j < 18; j++)
                 {
                     var SlotListObj=new SlotList();
 
