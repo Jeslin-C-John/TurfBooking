@@ -37,7 +37,7 @@
                 }
                     <th scope="row">@instance.Time:00</th>
                 @{
-                    if (@instance.Ground1 == "Slot Filled")
+                    if (@instance.Ground1 == "Slot Unavailable")
                     {
                         <td class="y_n" id="td_@SlotCount"><button type="button" class="unbutton" name="btnLink" onclick="$('#DangerModalalert').modal('show');" data-target="#DangerModalalert" data-item="@instance.Ground1">@instance.Ground1</button></td>
                     }
@@ -51,7 +51,7 @@
                     SlotCount++;
                 }
                 @{
-                    if (@instance.Ground2 == "Slot Filled")
+                    if (@instance.Ground2 == "Slot Unavailable")
                     {
                         <td class="y_n" id="td_@SlotCount"><button type="button" class="unbutton" name="btnLink" onclick="$('#DangerModalalert').modal('show');" data-target="#DangerModalalert" data-item="@instance.Ground2">@instance.Ground2</button></td>
                     }
@@ -65,7 +65,7 @@
                     SlotCount++;
                 }
                 @{
-                    if (@instance.Ground3 == "Slot Filled")
+                    if (@instance.Ground3 == "Slot Unavailable")
                     {
                         <td class="y_n" id="td_@SlotCount"><button type="button" class="unbutton" name="btnLink" onclick="$('#DangerModalalert').modal('show');" data-target="#DangerModalalert" data-item="@instance.Ground3">@instance.Ground3</button></td>
                     }
@@ -103,7 +103,7 @@
 
             
 
-            if ($(this).text() == 'Slot Filled') {
+            if ($(this).text() == 'Slot Unavailable') {
                 $(this).css('background-color', '#ff90a4');
                 
             }
