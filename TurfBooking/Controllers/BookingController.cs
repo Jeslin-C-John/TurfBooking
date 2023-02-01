@@ -53,6 +53,20 @@ namespace TurfBooking.Controllers
                 }
             }
 
+            if(ParseDateTime==DateTime.Now.Date) {
+
+                int NowHour = DateTime.Now.Hour;
+
+                for(int k=0;k<3;k++)
+                    for(int l=0;l<NowHour-5;l++)
+                        SlotObj.GroundSlotsArr[k, l] = true;
+
+
+            }
+
+
+
+
             for (int i=0; i < FillSlot.Count; i++)
             {
                 int GroundNo = FillSlot[i].Ground;
