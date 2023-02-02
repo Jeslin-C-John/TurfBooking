@@ -26,7 +26,20 @@ namespace TurfBooking.Controllers
             Instance.BookingDate = ParseDateTime;
             Instance.ShortBookingDate = ParseDateOnly;
 
-            Instance.SlotPM = Time + ":00";
+            if(Time> 12)
+            {
+                Instance.SlotPM = Time-12 + ":00 PM";
+            }
+            else if(Time==12)
+            {
+                Instance.SlotPM = Time  + ":00 PM";
+            }
+            else
+            {
+                Instance.SlotPM=Time + ":00 AM";
+            }
+
+            
 
 
 

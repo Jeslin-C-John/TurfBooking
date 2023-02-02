@@ -50,8 +50,24 @@ namespace TurfBooking.Controllers
                 BookHistoryObj.BookingDate = BookHistory[i].BookingDate;
                 BookHistoryObj.Ground = BookHistory[i].Ground + 1;
                 BookHistoryObj.Slot= BookHistory[i].Slot + 6;
-                BookHistoryObj.SlotPM = BookHistoryObj.Slot + ":00";
-                if(BookHistoryObj.BookingDate>=DateTime.Now.Date && BookHistoryObj.Slot > DateTime.Now.Hour)
+                if (BookHistoryObj.Slot > 12)
+                {
+                    var AMPMSlot = BookHistoryObj.Slot - 12;
+                    BookHistoryObj.SlotPM = AMPMSlot + ":00 PM";
+                }
+                else if (BookHistoryObj.Slot == 12)
+                {
+                    var AMPMSlot = BookHistoryObj.Slot;
+                    BookHistoryObj.SlotPM = AMPMSlot + ":00 PM";
+                }
+                else
+                {
+                    var AMPMSlot = BookHistoryObj.Slot;
+                    BookHistoryObj.SlotPM = AMPMSlot + ":00 AM";
+                }
+                if(BookHistoryObj.BookingDate == DateTime.Now.Date && BookHistoryObj.Slot > DateTime.Now.Hour)
+                    BookHistoryList.Add(BookHistoryObj);
+                else if (BookHistoryObj.BookingDate > DateTime.Now.Date)
                     BookHistoryList.Add(BookHistoryObj);
             }
 

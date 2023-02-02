@@ -85,6 +85,22 @@ namespace TurfBooking.Controllers
 
                     SlotListObj.Time = j + 6;
 
+                if(SlotListObj.Time > 12)
+                {
+                    int IntTime = SlotListObj.Time - 12;
+                    SlotListObj.StringTime=IntTime.ToString() + ":00 PM";
+                }
+                else if (SlotListObj.Time == 12)
+                {
+                    int IntTime = SlotListObj.Time;
+                    SlotListObj.StringTime = SlotListObj.Time.ToString() + ":00 PM";
+                }
+                else
+                {
+                    int IntTime = SlotListObj.Time;
+                    SlotListObj.StringTime = IntTime.ToString() + ":00 AM";
+                }
+
                 if (SlotObj.GroundSlotsArr[0, j] == false)
                     SlotListObj.Ground1 = "Book Now!";
                 else SlotListObj.Ground1 = "Slot Unavailable";
