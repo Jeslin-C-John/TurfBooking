@@ -24,18 +24,67 @@
             <th scope="col">Date</th>
             <th scope="col">Time</th>
             <th scope="col">Ground</th>
+            <th scope="col">Actions</th>
 
         </tr>
     </thead>
 
     <tbody>
-
+        @{
+            int count = 0;
+        }
         @foreach (var instance in Model)
-        {
+        {   
+            count++;
+
             <tr>
                 <td>@instance.ShortBookingDate</td>
                 <td>@instance.SlotPM</td>
                 <td>@instance.Ground</td>
+
+
+                <td>
+
+
+                    <button type="button" class="btn-danger btnLink" name="btnLink" onclick="$('#DangerModalalert_@count').modal('show');" data-target="#DangerModalalert_@count" data-item="@instance.Id">Cancel Booking</button>
+
+                    <div class="modal fade" id="DangerModalalert_@count" role="dialog">
+                        <div class="modal-dialog err-pop" style="">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h3>Cancel Slot?</h3>
+                                </div>
+                                <div class="modal-body" style="text-align:center;">
+
+
+                                    @using (Html.BeginForm())
+                                    {
+
+
+                                        <div>
+                                            <br />
+
+
+                                            <input type="button" value="Confirm" class="btn-danger" onclick="location.href = '@Url.Action("Index", "Delete", new { Taskid=@instance.Id})'" />
+
+
+
+                                            <input type="button" value="Cancel" class="btn-primary" onclick="location.href = '@Url.Action("Index", "Home")'" />
+
+
+                                        </div>
+
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+
+
+
+
+
             </tr>
         }
     </tbody>

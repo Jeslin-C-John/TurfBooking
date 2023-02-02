@@ -45,11 +45,13 @@ namespace TurfBooking.Controllers
 
                 BookHistoryObj.ShortBookingDate = DateOnlyShort;
 
+                BookHistoryObj.Id = BookHistory[i].Id;
+
                 BookHistoryObj.BookingDate = BookHistory[i].BookingDate;
                 BookHistoryObj.Ground = BookHistory[i].Ground + 1;
                 BookHistoryObj.Slot= BookHistory[i].Slot + 6;
                 BookHistoryObj.SlotPM = BookHistoryObj.Slot + ":00";
-                if(BookHistoryObj.BookingDate>=DateTime.Now.Date)
+                if(BookHistoryObj.BookingDate>=DateTime.Now.Date && BookHistoryObj.Slot > DateTime.Now.Hour)
                     BookHistoryList.Add(BookHistoryObj);
             }
 
