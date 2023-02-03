@@ -39,16 +39,24 @@ namespace TurfBooking.Controllers
 
 
 
-            using (SHA256 sha256Hash = SHA256.Create())
-            {
-                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(e.Password));
-                StringBuilder builder = new StringBuilder();
-                for (int i = 0; i < bytes.Length; i++)
-                {
-                    builder.Append(bytes[i].ToString("x2"));
-                }
-                e.EncryptPass = builder.ToString();
-            }
+            //using (SHA256 sha256Hash = SHA256.Create())
+            //{
+            //    byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(e.Password));
+            //    StringBuilder builder = new StringBuilder();
+            //    for (int i = 0; i < bytes.Length; i++)
+            //    {
+            //        builder.Append(bytes[i].ToString("x2"));
+            //    }
+            //    e.EncryptPass = builder.ToString();
+            //}
+
+
+
+            string password = e.Password;
+            e.EncryptPass = SecretHasher.Hash(password);
+
+
+
             UserContext Context = new UserContext();
             UserModel Instance = new UserModel()
             {
